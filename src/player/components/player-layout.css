@@ -1,0 +1,16 @@
+.Player {
+  background: #222;
+  height: 100px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  user-select: none;
+  display: flex;
+}
+
+.Player-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: inherit;
+}

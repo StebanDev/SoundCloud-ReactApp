@@ -1,0 +1,7 @@
+.PlayPause {
+  opacity: 0.9;
+}
+.PlayPause:hover {
+  transform: scale(1.05);
+  opacity: 1;
+}

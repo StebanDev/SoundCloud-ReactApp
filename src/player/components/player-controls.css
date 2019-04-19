@@ -1,0 +1,14 @@
+.PlayerControls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: inherit;
+}
+
+/* .PlayerControls div {
+  opacity: 0.9;
+}
+.PlayerControls div:hover {
+  transform: scale(1.05);
+  opacity: 1;
+} */

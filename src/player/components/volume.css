@@ -1,0 +1,49 @@
+.Volume {
+  display: flex;
+  flex-direction: row;
+  margin-left: 80px;
+  align-items: center;
+  opacity: 0.9;
+}
+.Volume:hover {
+  opacity: 1;
+}
+.Volume:hover .VolumeBar-dragger {
+  visibility: visible;
+}
+.VolumeIcon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+.VolumeBar {
+  /* position: absolute; */
+  height: 6px;
+  border-bottom: 1px solid #3a3a3a;
+  cursor: pointer;
+  width: 100px;
+  margin-left: 10px;
+  background: #333;
+}
+
+.VolumeBar-status {
+  width: 0;
+  transition: width 0.3s linear;
+  background-color: #ff6622;
+  height: 100%;
+  position: relative;
+}
+
+.VolumeBar-dragger {
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  right: -8px;
+  background-color: #f5f5f5;
+  /* border: 1px solid #ff9948; */
+  top: -4px;
+  cursor: pointer;
+  border-radius: 12px;
+  visibility: hidden;
+}

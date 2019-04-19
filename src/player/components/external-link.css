@@ -1,0 +1,7 @@
+.ExternalLink {
+  margin-left: 50px;
+  opacity: 0.9;
+}
+.ExternalLink:hover {
+  opacity: 1;
+}

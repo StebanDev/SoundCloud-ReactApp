@@ -1,0 +1,68 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: #222;
+}
+.HomeLayout {
+  font-family: sans-serif;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Header .Title {
+  font-size: 2.5em;
+  margin: 10px 0 20px 0;
+  position: absolute;
+  top: 120px;
+  transition: height 0.4s cubic-bezier(0.075, 0.82, 0.165, 1),
+    top 0.4s, left 0.4s;
+}
+
+.Header {
+  position: relative;
+  width: 450px;
+  max-width: 500px;
+  height: 200px;
+  transition: height 0.4s cubic-bezier(0.075, 0.82, 0.165, 1),
+    margin-top 0.4s, vertical-align 0.4s;
+  margin-top: 100px;
+}
+.Header .Logo {
+  position: absolute;
+  top: 10px;
+  transition: height 0.4s cubic-bezier(0.075, 0.82, 0.165, 1),
+    top 0.4s, left 0.4s;
+  height: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.Header .Logo.active {
+  top: 10px;
+  left: 0;
+  height: 60px;
+}
+.Header .Title.active {
+  /* display: inline; */
+  top: 10px;
+  left: 80px;
+  font-size: 1.8em;
+}
+.Header.active {
+  margin-top: 20px;
+  height: 90px;
+  vertical-align: middle;
+}
+
+@keyframes example {
+  from {
+    /* flex-direction: column; */
+  }
+  to {
+    /* flex-direction: row; */
+  }
+}

@@ -1,0 +1,27 @@
+.Search {
+  margin-bottom: 20px;
+  position: relative;
+}
+.Search-input {
+  border-radius: 25px;
+  height: 30px;
+  padding: 10px 50px;
+  font-size: 1.2em;
+  border: none;
+  outline: 0;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  width: 420px;
+}
+.Search-input-icon {
+  position: absolute;
+  top: 11px;
+  left: 15px;
+  width: 30px;
+  height: 30px;
+  background: url('./search.png') no-repeat;
+  background-size: 28px;
+}
+
+.Search-input:focus {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
