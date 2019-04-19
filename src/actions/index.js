@@ -19,7 +19,6 @@ export const fetchSongs = () => {
     )
       .then(res => res.json())
       .then(json => {
-        console.log(json);
         dispatch(getSongs(json));
       });
   };
@@ -32,7 +31,6 @@ export const searchSongs = query => {
     )
       .then(res => res.json())
       .then(json => {
-        console.log(json);
         dispatch(getSongs(json));
       });
   };
@@ -46,11 +44,13 @@ export const playSong = ({
 }) => {
   return {
     type: PLAY_SONG,
-    song: {
-      title,
-      author,
-      streamUrl,
-      externalUrl,
+    payload: {
+      song: {
+        title,
+        author,
+        streamUrl,
+        externalUrl
+      },
       visible: true
     }
   };

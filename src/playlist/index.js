@@ -5,7 +5,6 @@ import './playlist.css';
 
 class Playlist extends Component {
   render() {
-    console.log('my songs', this.props.songs);
     return (
       <div className="Playlist">
         {this.props.songs.map(song => {
@@ -39,7 +38,7 @@ class Playlist extends Component {
 }
 
 const mapStateToProps = state => {
-  const { songs } = state;
+  const { songs } = state.search;
   return {
     songs
   };

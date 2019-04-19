@@ -24,7 +24,6 @@ class Player extends Component {
     mute: false
   };
   handlePlayToggle = event => {
-    console.log('status ', this.props.pause);
     this.props.dispatch(pausePlayer(!this.props.pause));
     this.setState({
       pause: !this.state.pause
@@ -33,7 +32,6 @@ class Player extends Component {
   handleLoadedMetadata = event => {
     this.audio = event.target;
     this.progressbar = document.querySelector('.ProgressBar');
-    console.log('metadata loaded', this.audio.duration);
     this.setState({
       duration: this.audio.duration
     });
@@ -52,14 +50,7 @@ class Player extends Component {
     const currentPosition =
       event.nativeEvent.clientX / this.progressbar.offsetWidth;
     var rect = event.target.getBoundingClientRect();
-    var x = event.clientX - rect.left; //x position within the element.
-    var y = event.clientY - rect.top; //y position within the element.
     const currentTime = currentPosition * this.state.duration;
-    console.log('offsetX', event.nativeEvent.offsetX);
-    console.log('clientX', event.clientX);
-    console.log('rect', rect);
-    console.log('offsetWidth', this.progressbar.offsetWidth);
-    console.log('currentTime', currentTime);
     this.audio.currentTime = currentTime;
     this.setState({
       progress: currentPosition * 100 + '%'
@@ -83,7 +74,6 @@ class Player extends Component {
   handlePlaybackEnd = event => {
     this.props.dispatch(pausePlayer(true));
     this.handleNextSong();
-    console.log('audio ended');
   };
   handleVolumeChange = event => {
     const rect = event.currentTarget.getBoundingClientRect();
@@ -101,14 +91,12 @@ class Player extends Component {
     });
 
     if (this.audio.volume > 0) {
-      console.log('muted');
       this.audio.volume = 0;
       this.setState({
         volumeP: '0%',
         mute: true
       });
     } else {
-      console.log('not muted');
       this.audio.volume = this.state.prevVolume;
       this.setState({
         volumeP: this.state.prevVolume * 100 + '%',
@@ -159,8 +147,12 @@ class Player extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log('status2', state.pause);
-  const { title, author, streamUrl, externalUrl } = state.song;
+  const {
+    title,
+    author,
+    streamUrl,
+    externalUrl
+  } = state.player.song;
   return {
     pause: state.pause,
     song: {
@@ -169,7 +161,7 @@ const mapStateToProps = state => {
       streamUrl,
       externalUrl
     },
-    visible: state.visible
+    visible: state.player.visible
   };
 };
 

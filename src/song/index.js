@@ -8,24 +8,8 @@ SC.initialize({
   client_id: 'NmW1FlPaiL94ueEu7oziOWjYEzZzQDcK'
 });
 
-// stream track id 293
-// SC.stream('/tracks/197494692').then(function(player) {
-//   player
-//     .play()
-//     .then(function() {
-//       console.log('Playback started!');
-//     })
-//     .catch(function(e) {
-//       console.error(
-//         'Playback rejected. Try calling play() from a user interaction.',
-//         e
-//       );
-//     });
-// });
-
 class Song extends Component {
   handlePlaySong = event => {
-    console.log(event.currentTarget);
     document
       .querySelectorAll('.Song')
       .forEach(el => el.classList.remove('selected'));

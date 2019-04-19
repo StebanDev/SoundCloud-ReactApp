@@ -4,8 +4,7 @@ import { pausePlayer, setTrackDuration } from '../../actions';
 
 class Audio extends Component {
   componentWillReceiveProps(nextProps) {
-    const { pause, streamUrl } = nextProps;
-    console.log('streamUrl', streamUrl);
+    const { pause } = nextProps;
     if (pause) {
       this.audio.pause();
     } else {

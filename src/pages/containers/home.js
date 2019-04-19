@@ -13,7 +13,6 @@ class Home extends Component {
   }
   handleSubmit = event => {
     const query = this.input.value;
-    console.log(query);
     event.preventDefault();
     this.props.dispatch(setLoadingStart());
     this.props.dispatch(searchSongs(query));
@@ -41,7 +40,7 @@ class Home extends Component {
 
 const mapStateToProps = state => {
   return {
-    loading: state.loading
+    loading: state.search.loading
   };
 };
 

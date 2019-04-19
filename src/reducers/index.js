@@ -11,19 +11,28 @@ const reducer = (state = {}, action) => {
   switch (action.type) {
     case FETCH_SONGS:
       return Object.assign({}, state, {
-        songs: action.tracks,
-        loading: false
+        search: {
+          songs: action.tracks,
+          loading: false
+        }
       });
     case PLAY_SONG:
-      const { title, author, streamUrl, externalUrl } = action.song;
+      const {
+        title,
+        author,
+        streamUrl,
+        externalUrl
+      } = action.payload.song;
       return Object.assign({}, state, {
-        song: {
-          title,
-          author,
-          streamUrl,
-          externalUrl
-        },
-        visible: action.song.visible
+        player: {
+          song: {
+            title,
+            author,
+            streamUrl,
+            externalUrl
+          },
+          visible: action.payload.visible
+        }
       });
     case PAUSE:
       return Object.assign({}, state, {
@@ -39,8 +48,10 @@ const reducer = (state = {}, action) => {
       });
     case LOADING_START:
       return Object.assign({}, state, {
-        loading: true,
-        songs: []
+        search: {
+          loading: true,
+          songs: []
+        }
       });
     default:
       return state;
