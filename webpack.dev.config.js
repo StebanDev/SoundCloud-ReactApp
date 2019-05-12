@@ -14,8 +14,6 @@ module.exports = {
   module: {
     rules: [
       {
-        // test: que tipo de archivo quiero reconocer,
-        // use: que loader se va a encargar del archivo
         test: /\.(js|jsx)$/,
         exclude: /(node_modules)/,
         use: {
@@ -23,7 +21,10 @@ module.exports = {
           options: {
             presets: ['@babel/preset-env', '@babel/preset-react'],
             plugins: [
-              ['@babel/plugin-proposal-class-properties', { loose: true }]
+              [
+                '@babel/plugin-proposal-class-properties',
+                { loose: true }
+              ]
             ]
           }
         }

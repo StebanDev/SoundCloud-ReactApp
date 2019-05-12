@@ -15,7 +15,7 @@ body {
 }
 
 .Header .Title {
-  font-size: 2.5em;
+  font-size: 2.4em;
   margin: 10px 0 20px 0;
   position: absolute;
   top: 120px;
@@ -56,13 +56,4 @@ body {
   margin-top: 20px;
   height: 90px;
   vertical-align: middle;
-}
-
-@keyframes example {
-  from {
-    /* flex-direction: column; */
-  }
-  to {
-    /* flex-direction: row; */
-  }
 }

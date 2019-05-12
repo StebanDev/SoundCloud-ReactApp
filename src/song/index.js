@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
-import SC from 'soundcloud';
 import './song.css';
 import { playSong } from '../actions';
 import { connect } from 'react-redux';
-
-SC.initialize({
-  client_id: 'NmW1FlPaiL94ueEu7oziOWjYEzZzQDcK'
-});
 
 class Song extends Component {
   handlePlaySong = event => {

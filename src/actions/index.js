@@ -12,22 +12,10 @@ const getSongs = data => {
   };
 };
 
-export const fetchSongs = () => {
-  return dispatch => {
-    fetch(
-      'http://api.soundcloud.com/resolve?url=https://soundcloud.com/ultrarecords/sets/electronic-alternative&client_id=NmW1FlPaiL94ueEu7oziOWjYEzZzQDcK'
-    )
-      .then(res => res.json())
-      .then(json => {
-        dispatch(getSongs(json));
-      });
-  };
-};
-
 export const searchSongs = query => {
   return dispatch => {
     fetch(
-      `https://api.soundcloud.com/tracks/?client_id=86b6a66bb2d863f5d64dd8a91cd8de94&q=${query}&limit=20`
+      `https://api.soundcloud.com/tracks/?client_id=NmW1FlPaiL94ueEu7oziOWjYEzZzQDcK&q=${query}&limit=20`
     )
       .then(res => res.json())
       .then(json => {

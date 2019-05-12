@@ -1,38 +1,39 @@
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-
-module.exports = (env) => {
+module.exports = env => {
   const plugins = [
-    new ExtractTextPlugin("css/[name].[hash].css")
-  ]
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].[hash].css',
+      chunkFilename: '[id].css'
+    }),
+    new HtmlWebpackPlugin({
+      template: './public/index.html'
+    })
+  ];
 
   if (env.NODE_ENV === 'production') {
-    plugins.push(
-      new CleanWebpackPlugin(['dist'], {root: __dirname})
-    )
+    plugins.push(new CleanWebpackPlugin());
   }
 
   return {
-
+    mode: 'production',
     entry: {
-      'home': path.resolve(__dirname, 'src/entries/home.js'),
+      home: path.resolve(__dirname, 'src/entries/home.js')
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: 'js/[name].[hash].js',
-      publicPath: path.resolve(__dirname, 'dist')+"/",
-      chunkFilename: 'js/[id].[chunkhash].js',
+      filename: 'js/[name].[hash].js'
+      // publicPath: 'dist/'
     },
     devServer: {
-      port: 9000,
+      port: 9000
     },
     module: {
       rules: [
         {
-          // test: que tipo de archivo quiero reconocer,
-          // use: que loader se va a encargar del archivo
           test: /\.(js|jsx)$/,
           exclude: /(node_modules)/,
           use: {
@@ -40,23 +41,25 @@ module.exports = (env) => {
             options: {
               presets: ['@babel/preset-env', '@babel/preset-react'],
               plugins: [
-                ["@babel/plugin-proposal-class-properties", { "loose": true }]
-              ],
+                [
+                  '@babel/plugin-proposal-class-properties',
+                  { loose: true }
+                ]
+              ]
             }
-          },
+          }
         },
         {
           test: /\.css$/,
-          use: ExtractTextPlugin.extract({
-            use: [
-              {
-                loader: 'css-loader',
-                options: {
-                  // minimize: true, not working in new versions
-                }
+          use: [
+            {
+              loader: MiniCssExtractPlugin.loader,
+              options: {
+                publicPath: '../'
               }
-            ]
-          })
+            },
+            'css-loader'
+          ]
         },
         {
           test: /\.(jpg|png|gif|svg)$/,
@@ -65,12 +68,12 @@ module.exports = (env) => {
             options: {
               limit: 10000,
               fallback: 'file-loader',
-              name: 'images/[name].[hash].[ext]',
+              name: 'images/[name].[hash].[ext]'
             }
           }
-        },
+        }
       ]
     },
     plugins
-  }
-}
+  };
+};
