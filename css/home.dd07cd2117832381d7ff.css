@@ -1,0 +1,318 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: #222;
+}
+.HomeLayout {
+  font-family: sans-serif;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Header .Title {
+  font-size: 2.4em;
+  margin: 10px 0 20px 0;
+  position: absolute;
+  top: 120px;
+  transition: height 0.4s cubic-bezier(0.075, 0.82, 0.165, 1),
+    top 0.4s, left 0.4s;
+}
+
+.Header {
+  position: relative;
+  width: 450px;
+  max-width: 500px;
+  height: 200px;
+  transition: height 0.4s cubic-bezier(0.075, 0.82, 0.165, 1),
+    margin-top 0.4s, vertical-align 0.4s;
+  margin-top: 100px;
+}
+.Header .Logo {
+  position: absolute;
+  top: 10px;
+  transition: height 0.4s cubic-bezier(0.075, 0.82, 0.165, 1),
+    top 0.4s, left 0.4s;
+  height: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.Header .Logo.active {
+  top: 10px;
+  left: 0;
+  height: 60px;
+}
+.Header .Title.active {
+  /* display: inline; */
+  top: 10px;
+  left: 80px;
+  font-size: 1.8em;
+}
+.Header.active {
+  margin-top: 20px;
+  height: 90px;
+  vertical-align: middle;
+}
+
+.Song {
+  display: flex;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+.Song:hover {
+  background-color: #111;
+}
+.Song-cover {
+  min-width: 160px;
+  height: 160px;
+}
+.Song-cover-image {
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(135deg, #846170, #70929c);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+.Song-info {
+  padding: 10px;
+}
+
+.Song-title {
+  font-size: 1.4em;
+}
+
+.Song.selected {
+  background-color: #111;
+}
+
+.Playlist {
+  margin-bottom: 100px;
+  width: 1000px;
+}
+
+.Search {
+  margin-bottom: 20px;
+  position: relative;
+}
+.Search-input {
+  border-radius: 25px;
+  height: 30px;
+  padding: 10px 50px;
+  font-size: 1.2em;
+  border: none;
+  outline: 0;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  width: 420px;
+}
+.Search-input-icon {
+  position: absolute;
+  top: 11px;
+  left: 15px;
+  width: 30px;
+  height: 30px;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAQAAADZc7J/AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QAAKqNIzIAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAHdElNRQfjBAkAMQb7sohBAAACzElEQVRIx5WUX0hTURzHv+dedMs/bMsyNY2ofCjTx1Q20LeExBkREb1Ffx5KStlchLJREDT/FEGW+hL5GCIZYQ+GgjKlMHzpD1SCFrk0/3WduObu6cFzz713293w97Lf+e7cz/me3++cQxATvoz1k3CSUuRhL5YQxEc6KAz5JRgE0Q48FuqWb5CsuFmbeCLf6/iTAuA+g27kGK2ENdxsexYviwrI5SWPkQHjMKPeYS0Y/kQTAlxe4tNvB8AqzDFKhdUWGNJLwrZ54tVoQdoilK2lt9ky08gx0ow5zX8N7ktxNfBY5G/Yowi0K8vjW9f1xRzywsP9hSLFD+d1W7C3oobzXG0to//0a4xuBd7aZ+FkiHQxM/Ba48CXsf5baRztar9mVMPmO7SVpRFa2L7Aa7BRw/u+INwybsLqXXxlaRqp0xRR5gP6yPi8AT0R2sEHWgAp5eUYRNIQXvG0VKOiQDGw8iU5wP8LayzNV8+MgN0sk3oiSBVL7NfUkK0CllmWfSUtJUBZTA6G1Booh4JYjyT/2pULC0uXX0Q5gH7mM2pTFPGUsnM6pVHpSyWl131m48/PirSJD8Y0gPAbbLL8QMhrDDjYiOMsjYp9qi6+C9tzUMlGdvtsYDrh/p2kd/vmAhjw92oAQOUUucpuPoHTIZaMT8l687Uu9PCnJ4zTgRUdYGLDHkS90gtUmc47IifmJyUAuL2v4pz1OS7w1UEWo90Tf1UAq6u7E40xriUsIoc3Thsz0erOHxoHALB/2GpDuW6aCTYk7opNcFYMKC4076DrMnmATMM2hMkyzY93Iagz2nsjxXiKRDciin6UbJXjO1cOiaNNRTEOmI9cUoc6lCEPJgCL9APGxL77cwDQVCSO4LDeBYFheCy7JJ+s15oL5RGi3pkZUpUEkDj0CDK0Y0AMQhJ2DvD/jFbzB/a9uHMAMCk5+nGU5pNx+eJ/y9jaL1kedb8AAAAldEVYdGRhdGU6Y3JlYXRlADIwMTktMDQtMDhUMjI6NDk6MDYrMDI6MDBKTlu9AAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE5LTA0LTA4VDIyOjQ5OjA2KzAyOjAwOxPjAQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAAASUVORK5CYII=) no-repeat;
+  background-size: 28px;
+}
+
+.Search-input:focus {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.Player {
+  background: #222;
+  height: 100px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  user-select: none;
+  display: flex;
+}
+
+.Player-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: inherit;
+}
+
+.PlayPause {
+  opacity: 0.9;
+}
+.PlayPause:hover {
+  transform: scale(1.05);
+  opacity: 1;
+}
+
+.PlayerControls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: inherit;
+}
+
+/* .PlayerControls div {
+  opacity: 0.9;
+}
+.PlayerControls div:hover {
+  transform: scale(1.05);
+  opacity: 1;
+} */
+
+.ProgressBar {
+  position: absolute;
+  height: 8px;
+  border-bottom: 1px solid #3a3a3a;
+  cursor: pointer;
+  width: 100%;
+  background: #333;
+}
+
+.ProgressBar-status {
+  width: 0;
+  transition: width 0.3s linear;
+  background-color: #ff6622;
+  height: 100%;
+  position: relative;
+}
+
+.ProgressBar-dragger {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  right: -8px;
+  background-color: #f5f5f5;
+  /* border: 1px solid #ff9948; */
+  top: -4px;
+  cursor: pointer;
+  border-radius: 16px;
+}
+
+.Timer {
+  margin-left: 50px;
+}
+
+.PlayerInfo {
+  font-size: 0.75em;
+  width: 30%;
+  padding: 25px 80px 20px 20px;
+}
+
+.PreviousBtn {
+  margin: 0 35px;
+  opacity: 0.9;
+}
+.PreviousBtn:hover {
+  transform: scale(1.05);
+  opacity: 1;
+}
+
+.NextBtn {
+  margin: 0 35px;
+  opacity: 0.9;
+}
+.NextBtn:hover {
+  transform: scale(1.05);
+  opacity: 1;
+}
+
+.Volume {
+  display: flex;
+  flex-direction: row;
+  margin-left: 80px;
+  align-items: center;
+  opacity: 0.9;
+}
+.Volume:hover {
+  opacity: 1;
+}
+.Volume:hover .VolumeBar-dragger {
+  visibility: visible;
+}
+.VolumeIcon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+.VolumeBar {
+  /* position: absolute; */
+  height: 6px;
+  border-bottom: 1px solid #3a3a3a;
+  cursor: pointer;
+  width: 100px;
+  margin-left: 10px;
+  background: #333;
+}
+
+.VolumeBar-status {
+  width: 0;
+  transition: width 0.3s linear;
+  background-color: #ff6622;
+  height: 100%;
+  position: relative;
+}
+
+.VolumeBar-dragger {
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  right: -8px;
+  background-color: #f5f5f5;
+  /* border: 1px solid #ff9948; */
+  top: -4px;
+  cursor: pointer;
+  border-radius: 12px;
+  visibility: hidden;
+}
+
+.ExternalLink {
+  margin-left: 50px;
+  opacity: 0.9;
+}
+.ExternalLink:hover {
+  opacity: 1;
+}
+
+.lds-ring {
+  display: inline-block;
+  /* position: relative; */
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  margin: 6px;
+  border: 6px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #fff transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
